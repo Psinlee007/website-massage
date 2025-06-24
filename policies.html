@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Policies • Janjao Thai Spa and Wellness</title>
+
+  <!-- Fonts and Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pQUhY2DtE9z7dqVKgf/mBlC9ZwTe74MkRUYw35vj0IadB1iKs6vTmyaKOA1NVuMcZV8C4D4riJX4C/9y2o+TOw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    /* ========= ROOT PALETTE ========= */
+    :root {
+      --gold: #c3a57d;
+      --gold-dark: #a78962;
+      --brown: #6c4b3b;
+      --text: #2f2f2f;
+      --sub: #555;
+      --bg: #ffffff;
+      --bg-soft: #f9f7f4;
+      --beige: #e7dbcd;
+      --shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+    }
+
+    /* ========= CORE RESET ========= */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    .script { font-family: 'Great Vibes', cursive; font-size: 1.4rem; color: var(--gold-dark); line-height: 1; }
+
+    /* ========= NAVBAR ========= */
+    nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.92); backdrop-filter: blur(10px); box-shadow: 0 2px 6px rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center; padding: 1.1rem 2.2rem; font-size: 0.95rem; z-index: 1000; }
+    .brand { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold); font-weight: 700; letter-spacing: 0.4px; }
+    .links { display: flex; gap: 1.8rem; }
+    .links a { text-decoration: none; font-weight: 600; text-transform: uppercase; color: var(--text); letter-spacing: 0.5px; transition: color 0.3s; }
+    .links a:hover { color: var(--gold-dark); }
+
+    /* ========= POLICIES HEADER ========= */
+    .policies-header {
+      margin-top: 8rem;
+      text-align: center;
+      padding: 3rem 1rem;
+      background: linear-gradient(135deg, var(--beige), var(--gold));
+      color: var(--brown);
+    }
+    .policies-header h1 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 0.5rem; }
+    .policies-header p { font-size: 1.1rem; }
+
+    /* ====== POLICIES IMAGE STYLING ====== */
+    .policies-image { max-width: 900px; margin: 2rem auto; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); }
+    .policies-image img { width: 100%; height: auto; display: block; }
+
+    .section { max-width: 900px; margin: 3rem auto; padding: 0 1.5rem; }
+    .section h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--gold-dark); margin-bottom: 1.5rem; text-align: center; position: relative; }
+    .section h2::after { content: ""; position: absolute; left: 50%; transform: translateX(-50%); bottom: -8px; width: 60px; height: 2px; background: var(--gold-dark); }
+    .policies-list { list-style: none; margin-top: 2rem; }
+    .policies-list li { margin-bottom: 1.3rem; line-height: 1.5; }
+    .policies-list li strong { color: var(--gold-dark); }
+    .policies-list li ul { margin-top: 0.5rem; margin-left: 1.2rem; list-style: disc; }
+    .policies-list li ul li { margin-bottom: 0.7rem; }
+
+    /* ========= CONTACT & HOURS ========= */
+    .contact-info { margin-top: 3rem; text-align: center; color: var(--sub); font-size: 0.95rem; }
+    .contact-info p { margin-bottom: 0.5rem; }
+
+    /* ========= FOOTER ========= */
+    footer { background: var(--bg-soft); text-align: center; padding: 2.5rem 1rem; color: #777; font-size: 0.9rem; border-top: 1px solid #eee; margin-top: 4rem; }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav>
+    <div class="brand">Janjao Thai Spa and Wellness</div>
+    <div class="links">
+      <a href="home.html">Home</a>
+      <a href="home.html#about">About</a>
+      <a href="massage.html">Massage</a>
+      <a href="policies.html">Policies</a>
+    </div>
+  </nav>
+
+  <!-- ===== POLICIES HEADER ===== -->
+  <header class="policies-header">
+    <h1>Spa Policies</h1>
+    <p>Please arrive prepared to enjoy your experience.</p>
+  </header>
+
+  <!-- ===== NEW POLICY IMAGE ===== -->
+  <div class="policies-image">
+    <img src="Oil-massage01.jpg" alt="Luxurious Oil Massage">
+  </div>
+
+  <!-- ===== POLICIES SECTION ===== -->
+  <section class="section">
+    <h2>Our Policies</h2>
+    <ul class="policies-list">
+      <li>
+        <strong>Please arrive <u>10 minutes</u> early</strong> to ensure we can begin your appointment on time. If you arrive late, your session may be shortened to accommodate the next guest at the full service fee.
+      </li>
+      <li>
+        <strong>Cancellation / Rescheduling Policy:</strong>
+        <ul>
+          <li>To cancel or reschedule, please give us at least <u>24 hours</u> notice.</li>
+          <li>Late cancellations (less than 24 hours) will be billed <strong>50%</strong> of the scheduled service amount.</li>
+          <li>No-shows will be charged <strong>100%</strong> of the service fee.</li>
+        </ul>
+        Our therapists and staff reserve their time to serve you—this policy helps us maintain a high level of service and accommodate other guests.
+      </li>
+      <li>
+        <strong>Quiet Environment:</strong> To preserve our tranquil atmosphere, please turn off your cell phone or set it to silent. Conversation volume should be kept to a minimum while in the spa.
+      </li>
+      <li>
+        <strong>Children:</strong> To maintain a peaceful environment, we kindly ask that you not bring children unless absolutely necessary. Minors under 16 must be accompanied by an adult, and anyone under 18 requires a parent or guardian to sign a liability waiver.
+      </li>
+      <li>
+        <strong>Payment Methods:</strong> We accept cash and all major credit cards (Visa, Mastercard, American Express, Discover). We do <u>not</u> accept personal checks.
+      </li>
+      <li>
+        <strong>Gratuities:</strong> Gratuities are not included in service prices. A 20% tip is customary. You may leave cash or add gratuity to your credit card at checkout. Tipping is not required but greatly appreciated.
+      </li>
+      <li>
+        <strong>Jewelry & Valuables:</strong> Please leave jewelry and valuables at home, as we cannot be responsible for lost items. If you must bring them, keep them with you at all times.
+      </li>
+      <li>
+        <strong>Tailoring Your Treatment:</strong>
+        We want your experience to be perfect—please communicate any preferences for pressure, music, lighting, table temperature, or quiet time. Your therapist welcomes all questions and feedback.
+      </li>
+      <li>
+        <strong>Accessibility:</strong> Our spa is wheelchair accessible. If you require assistance entering or exiting, please let us know at least 24 hours in advance so we can accommodate you properly.
+      </li>
+      <li>
+        <strong>Health, Allergies & Pregnancy:</strong>
+        Please inform us of any medical conditions, allergies, medications, or if you are pregnant (we do not provide pregnancy massage during the first trimester). If you feel any discomfort during your session, notify your therapist immediately.
+      </li>
+      <li>
+        <strong>Towels & Draping:</strong> We provide towels and robes to ensure your comfort. Our therapists are trained in professional draping techniques—only the area being worked on will be uncovered at any time. Thai massage is always performed fully clothed on a traditional mat.
+      </li>
+      <li>
+        <strong>What to Wear:</strong> For your first visit, feel free to ask at reception or consult with your therapist about appropriate attire. We will always respect your comfort and privacy.
+      </li>
+      <li>
+        <strong>Gift Certificates:</strong> Gift certificates are non-refundable and must be presented at the time of service. Lost or stolen certificates cannot be replaced. They hold the value at time of purchase and may not be redeemed for cash.
+
+        

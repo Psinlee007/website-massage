@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Janjao Thai Spa and Wellness • Home</title>
+
+  <!-- Elegant serif + script fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&family=Great+Vibes&display=swap"
+    rel="stylesheet"
+  />
+  <!-- Font Awesome for icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-pQUhY2DtE9z7dqVKgf/mBlC9ZwTe74MkRUYw35vj0IadB1iKs6vTmyaKOA1NVuMcZV8C4D4riJX4C/9y2o+TOw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <style>
+    /* ========= ROOT PALETTE ========= */
+    :root {
+      --gold: #c3a57d;
+      --gold-dark: #a78962;
+      --brown: #6c4b3b;
+      --text: #2f2f2f;
+      --sub: #555;
+      --bg: #ffffff;
+      --bg-soft: #f9f7f4;
+      --beige: #e7dbcd;
+      --shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+    }
+
+    /* ========= RESET ========= */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+    }
+    .script {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.4rem;
+      color: #fff;
+      line-height: 1;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+    }
+
+    /* ========= REVEAL ANIMATIONS ========= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: all 0.85s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+    .reveal.left {
+      transform: translateX(-80px);
+    }
+    .reveal.right {
+      transform: translateX(80px);
+    }
+    .reveal.in-view {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ========= NAVBAR ========= */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.1rem 2.2rem;
+      z-index: 1000;
+    }
+    .brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: 0.4px;
+    }
+    .links {
+      display: flex;
+      gap: 1.8rem;
+    }
+    .links a {
+      position: relative;
+      text-decoration: none;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--text);
+      transition: color 0.3s;
+      padding: 0.2rem 0;
+    }
+    .links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--gold-dark);
+      transition: width 0.3s;
+      transform: translateX(-50%);
+    }
+    .links a:hover {
+      color: var(--gold-dark);
+    }
+    .links a:hover::after {
+      width: 80%;
+    }
+
+    /* ========= HERO ========= */
+    .hero {
+      height: 70vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 700px;
+      padding: 0 1rem;
+    }
+    .hero-inner h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
+      color: #fff;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.8);
+      animation: fadeDown 1.6s forwards;
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+    .hero-inner p {
+      font-size: 1.25rem;
+      color: #f0f0f0;
+      margin-bottom: 2rem;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+      animation: fadeUp 1.6s 0.2s forwards;
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 2.3rem;
+      border-radius: 35px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+      box-shadow: var(--shadow);
+    }
+    .btn-primary {
+      background: var(--brown);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background: var(--gold-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px rgba(0,0,0,0.2);
+    }
+    @keyframes fadeDown {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ========= DOWN ARROW ========= */
+    .down-arrow {
+      margin-top: 2rem;
+      font-size: 2rem;
+      color: #fff;
+      animation: bounce 2s infinite;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    }
+    @keyframes bounce {
+      0%,20%,50%,80%,100% { transform: translateY(0); }
+      40% { transform: translateY(10px); }
+      60% { transform: translateY(5px); }
+    }
+
+    /* ========= GENERIC SECTIONS ========= */
+    section {
+      max-width: 1100px;
+      margin: 5.5rem auto;
+      padding: 0 1.5rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--gold-dark);
+      text-align: center;
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateX(-80px);
+      transition: all 0.85s ease-out;
+    }
+    .section-title.in-view {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .section-title::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -10px;
+      width: 80px;
+      height: 2px;
+      background: var(--gold-dark);
+      transform: translateX(-50%);
+    }
+
+    /* ========= ABOUT SPLIT ========= */
+    .about-wrap {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      align-items: center;
+    }
+    .about-text {
+      font-size: 1.05rem;
+      color: var(--sub);
+    }
+    .about-img {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .about-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+    .about-img img:hover {
+      transform: scale(1.05);
+    }
+
+    /* ========= BENEFITS GRID ========= */
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-auto-rows: 320px;
+    }
+    .benefit {
+      position: relative;
+      overflow: hidden;
+    }
+    .benefit img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .benefit img:hover {
+      transform: scale(1.08);
+    }
+    .benefit-text {
+      position: absolute;
+      inset: 0;
+      background: var(--beige);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      text-align: center;
+    }
+    .benefit-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--gold-dark);
+      margin-bottom: 0.8rem;
+      letter-spacing: 2px;
+    }
+    .benefit-text p {
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    /* ========= SLIDESHOW ========= */
+    .slideshow-container {
+      position: relative;
+      height: 500px;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 1s;
+    }
+    .slide.active {
+      opacity: 1;
+    }
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .slide-caption {
+      position: absolute;
+      bottom: 0;
+      background: rgba(255,255,255,0.8);
+      width: 100%;
+      padding: 1.2rem 1.8rem;
+      font-size: 1rem;
+      color: var(--text);
+      backdrop-filter: blur(6px);
+      transform: translateY(100%);
+      transition: transform 0.8s ease;
+    }
+    .slide.active .slide-caption {
+      transform: translateY(0);
+    }
+    .slide-caption h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      color: var(--gold-dark);
+      margin-bottom: 0.3rem;
+    }
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2.2rem;
+      color: var(--gold-dark);
+      background: #fff;
+      border-radius: 50%;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: background 0.3s;
+    }
+    .nav-btn:hover {
+      background: var(--bg-soft);
+    }
+    .prev {
+      left: 1rem;
+    }
+    .next {
+      right: 1rem;
+    }
+
+    /* ========= CONTACT ========= */
+    .contact {
+      background: var(--bg-soft);
+      padding: 5rem 1.5rem;
+      border-top: 1px solid #eee;
+      text-align: center;
+    }
+    .contact h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.3rem;
+      color: var(--gold-dark);
+      margin-bottom: 2rem;
+      opacity: 0;
+      transform: translateY(60px);
+      transition: all 0.85s ease-out;
+    }
+    .contact h2.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .contact .social {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      margin-top: 1.2rem;
+      opacity: 0;
+      transform: translateY(60px);
+      transition: all 0.85s 0.2s ease-out;
+    }
+    .social.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .social a {
+      font-size: 1.4rem;
+      color: var(--brown);
+      transition: color 0.3s;
+    }
+    .social a:hover {
+      color: var(--gold-dark);
+    }
+    .map {
+      margin-top: 2rem;
+      max-width: 800px;
+      height: 300px;
+      border: 1px solid #e5e5e5;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(60px);
+      transition: all 0.85s 0.4s ease-out;
+    }
+    .map.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========= FOOTER ========= */
+    footer {
+      background: var(--bg-soft);
+      text-align: center;
+      padding: 3rem 1rem;
+      color: #777;
+      font-size: 0.9rem;
+      border-top: 1px solid #eee;
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav>
+    <div class="brand">Janjao Thai Spa and Wellness</div>
+    <div class="links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="massage.html">Massage</a>
+      <a href="policies.html">Policies</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="home">
+    <video class="hero-bg" autoplay muted loop playsinline>
+      <source src="Video massage.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <div class="hero-inner">
+      <span class="script">Exquisite Thai Therapy</span>
+      <h1>Where Tradition Meets Luxury</h1>
+      <p>Discover a peaceful oasis of restoration and wellbeing.</p>
+      <a href="massage.html" class="btn btn-primary">Explore Our Services</a>
+      <div class="down-arrow"><i class="fas fa-angle-down"></i></div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2 class="section-title reveal">About <span class="script">Us</span></h2>
+    <div class="about-wrap">
+      <div class="about-text reveal left">
+        <p>At <strong>Janjao Thai Spa and Wellness</strong>, our mission is to harmonise body and spirit through time-honoured Thai techniques blended with modern spa luxury. Each therapist is trained in authentic modalities to restore vitality, release tension, and calm the mind.</p>
+        <p>From the moment you enter, soft aromas, tranquil forest tones, and warm hospitality invite you to unwind and indulge.</p>
+      </div>
+      <div class="about-img reveal right">
+        <img src="about us.jpg" alt="Spa essentials with candle and oil" />
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS GRID -->
+  <section>
+    <div class="benefits">
+      <div class="benefit"><img class="reveal" src="caring.jpg" alt="Therapist giving relaxing face massage"/></div>
+      <div class="benefit"><div class="benefit-text reveal"><h3>Caring Therapists</h3><p>Our hand-selected team blends expertise with genuine compassion, tailoring each session to your unique needs.</p></div></div>
+      <div class="benefit"><img class="reveal" src="Luxurious Experience.jpg" alt="Spa salts and flowers"/></div>
+      <div class="benefit"><div class="benefit-text reveal"><h3>Luxurious Experience</h3><p>Indulge in a blend of traditional care and modern comfort. Every detail is chosen to give you a luxurious, pampering experience.</p></div></div>
+      <div class="benefit"><img class="reveal" src="Personal care.jpg" alt="Therapist customizing treatment"/></div>
+      <div class="benefit"><div class="benefit-text reveal"><h3>Personalized Care</h3><p>Each session is tailored to your needs. Our therapists listen, adapt, and ensure you receive the treatment your body truly needs.</p></div></div>
+      <div class="benefit"><img class="reveal" src="spa.jpg" alt="Spa ambiance"/></div>
+      <div class="benefit"><div class="benefit-text reveal"><h3>Multi-Discipline</h3><p>From traditional Thai to soothing aromatherapy, our diverse menu supports mobility, circulation, and holistic wellness.</p></div></div>
+      <div class="benefit"><img class="reveal" src="depositphotos_68801741-stock-photo-balinese-spa-setting.jpg" alt="Balinese spa setting"/></div>
+    </div>
+  </section>
+
+  <!-- SLIDESHOW -->
+  <section>
+    <h2 class="section-title reveal">Our Signature <span class="script">Therapies</span></h2>
+    <div class="slideshow-container reveal">
+      <div class="slide active"><img src="thai massage.jpg" alt="Thai Massage"/><div class="slide-caption"><h3>Traditional Thai</h3>Ancient stretching & acupressure revitalise energy flow and flexibility.</div></div>
+      <div class="slide"><img src="swedish or oil.jpg" alt="Swedish Massage"/><div class="slide-caption"><h3>Swedish Serenity</h3>Long, flowing strokes melt tension and enhance circulation.</div></div>
+      <div class="slide"><img src="oil or swedish.jpg" alt="Oil Massage"/><div class="slide-caption"><h3>Herbal Oil Blend</h3>Warm botanical oils nourish skin and calm the nervous system.</div></div>
+      <span class="nav-btn prev" onclick="plusSlides(-1)">&#10094;</span>
+      <span class="nav-btn next" onclick="plusSlides(1)">&#10095;</span>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <h2 class="reveal">Get In Touch</h2>
+    <p class="reveal"><strong>Phone:</strong> (111) 111-1111</p>
+    <p class="reveal"><strong>Email:</strong> hello@janjaothai.com</p>
+    <p class="reveal"><strong>Address:</strong> 789 Lotus Street, Serenity, CA 94555</p>
+    <div class="social reveal">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-tiktok"></i></a>
+      <a href="#"><i class="fab fa-yelp"></i></a>
+    </div>
+    <div class="map reveal">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.187236208081!2d-122.41941508468237!3d37.77492977975907"
+        width="100%"
+        height="100%"
+        style="border:0;"
+        allowfullscreen
+        loading="lazy"
+      ></iframe>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>&copy; 2025 <strong>Janjao Thai Spa and Wellness</strong>. Crafted with care.</footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    // SCROLL-TRIGGERED REVEAL
+    const revealEls = document.querySelectorAll('.reveal');
+    const observerReveal = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in-view');
+          observerReveal.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => observerReveal.observe(el));
+
+    // SLIDESHOW CONTROLS
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    function showSlide(n) {
+      slides.forEach(s => s.classList.remove('active'));
+      slides[n].classList.add('active');
+    }
+    function plusSlides(n) {
+      slideIndex = (slideIndex + n + slides.length) % slides.length;
+      showSlide(slideIndex);
+    }
+    setInterval(() => plusSlides(1), 6500);
+  </script>
+</body>
+</html>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Massage Services - Janjao Thai Spa and Wellness</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pQUhY2DtE9z7dqVKgf/mBlC9ZwTe74MkRUYw35vj0IadB1iKs6vTmyaKOA1NVuMcZV8C4D4riJX4C/9y2o+TOw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    /* ========= ROOT PALETTE ========= */
+    :root {
+      --gold: #c3a57d;
+      --gold-dark: #a78962;
+      --brown: #6c4b3b;
+      --text: #2f2f2f;
+      --sub: #555;
+      --bg: #ffffff;
+      --bg-soft: #f9f7f4;
+      --beige: #e7dbcd;
+      --shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+    }
+
+    /* ========= CORE RESET ========= */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+    }
+    .script {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.4rem;
+      color: var(--gold-dark);
+      line-height: 1;
+    }
+
+    /* ========= NAVBAR ========= */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.1rem 2.2rem;
+      z-index: 1000;
+    }
+    .brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: 0.4px;
+    }
+    .links {
+      display: flex;
+      gap: 1.8rem;
+    }
+    .links a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: color 0.3s;
+      padding: 0.2rem 0;
+      position: relative;
+    }
+    .links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--gold-dark);
+      transition: width 0.3s;
+      transform: translateX(-50%);
+    }
+    .links a:hover {
+      color: var(--gold-dark);
+    }
+    .links a:hover::after {
+      width: 80%;
+    }
+
+    /* ========= HERO ========= */
+    .hero {
+      background: url('https://media.istockphoto.com/id/1484026069/photo/relaxation-woman-back-massage-with-masseur-in-cosmetology-spa-centre.jpg?s=612x612&w=0&k=20&c=vJn_Ak9VBWKnwQUeFYFk0yBiyjY7Up9zhGCfBeX9_h4=') no-repeat center center/cover;
+      height: 60vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--gold-dark);
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.06);
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeSlideIn 2s ease-out forwards;
+    }
+    @keyframes fadeSlideIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes bounceIn {
+      0% { transform: scale(0.8); opacity: 0; }
+      60% { transform: scale(1.05); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+    @keyframes glow {
+      0% { box-shadow: 0 0 5px var(--gold); }
+      50% { box-shadow: 0 0 20px var(--gold); }
+      100% { box-shadow: 0 0 5px var(--gold); }
+    }
+
+    /* ========= SECTION GENERIC ========= */
+    .section {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+    .section h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold-dark);
+      margin-bottom: 1rem;
+      text-align: center;
+      animation: glow 2s ease-in-out infinite;
+    }
+    #searchBar {
+      margin: 1rem auto 2rem;
+      display: block;
+      padding: 0.5rem 1rem;
+      width: 100%;
+      max-width: 400px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      border: 1px solid var(--sub);
+      background: var(--bg-soft);
+      color: var(--text);
+    }
+
+    /* ========= SERVICES GRID & CARDS ========= */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+    .card {
+      background-color: var(--bg-soft);
+      padding: 1rem;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
+      animation: bounceIn 1s ease-out;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .card h3 {
+      margin: 0.5rem 0;
+      color: var(--gold-dark);
+      font-family: 'Playfair Display', serif;
+    }
+    .card p {
+      font-size: 0.9rem;
+      color: var(--sub);
+    }
+    .price {
+      font-weight: bold;
+      margin: 0.3rem 0;
+      color: var(--gold);
+    }
+    .btn {
+      background: var(--brown);
+      border: none;
+      padding: 0.5rem 1.2rem;
+      margin-top: 0.5rem;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      color: #fff;
+      transition: background 0.3s ease;
+    }
+    .btn:hover {
+      background: var(--gold-dark);
+    }
+
+    /* ========= FOOTER ========= */
+    footer {
+      background: var(--bg-soft);
+      padding: 2rem;
+      color: var(--sub);
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid #eee;
+    }
+
+    /* ========= SCROLL REVEAL ========= */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease;
+    }
+    .scroll-reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="brand">Janjao Thai Spa and Wellness</div>
+    <div class="links">
+      <a href="home.html">Home</a>
+      <a href="home.html#about">About</a>
+      <a href="massage.html">Massage</a>
+      <a href="policies.html">Policies</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <h1>Our Massage Services</h1>
+  </div>
+
+  <div class="section">
+    <input type="text" id="searchBar" placeholder="Search for a massage..." />
+  </div>
+
+  <div class="section scroll-reveal">
+    <h2>Thai Massages</h2>
+    <div class="services-grid">
+      <div class="card" data-name="Traditional Thai Massage">
+        <img src="traditional thai massage.jpg" alt="Traditional Thai" />
+        <h3>Traditional Thai Massage</h3>
+        <div class="price">$120 / 60 min<br>$165 / 90 min<br>$205 / 120 min</div>
+        <p>Combines assisted yoga stretches and rhythmic acupressure to increase flexibility, release muscle tension, and boost overall energy. Ideal for those feeling stiff or sluggish.</p>
+        <button class="btn">Book Now</button>
+      </div>
+      <div class="card" data-name="Thai Therapeutic">
+        <img src="woman-in-spa.png" alt="Thai Therapeutic" />
+        <h3>Thai Therapeutic</h3>
+        <div class="price">$130 / 60 min<br>$175 / 90 min<br>$215 / 120 min</div>
+        <p>A focused treatment that targets specific pain areas using deep muscle work and precise acupressure techniques. Great for injury recovery and chronic pain sufferers.</p>
+        <button class="btn">Book Now</button>
+      </div>
+      <div class="card" data-name="Office Syndrome">
+        <img src="Beautician20scrubbing20back20of20middle-aged.png" alt="Office Syndrome" />
+        <h3>Office Syndrome</h3>
+        <div class="price">$120 / 60 min<br>$165 / 90 min</div>
+        <p>Designed for people with desk jobs, this massage alleviates stiffness and tightness in the neck, shoulders, and lower back caused by poor posture or prolonged sitting.</p>
+        <button class="btn">Book Now</button>
+      </div>
+      <div class="card" data-name="Thai Herbal">
+        <img src="Herbal.jpg" alt="Thai Herbal" />
+        <h3>Thai Herbal</h3>
+        <div class="price">$140 / 60 min<br>$185 / 90 min<br>$225 / 120 min</div>
+        <p>Uses hot herbal compresses filled with natural Thai herbs to relieve inflammation, stimulate blood flow, and provide deep muscle relaxation. Perfect for detoxifying the body.</p>
+        <button class="btn">Book Now</button>
+      </div>
+      <div class="card" data-name="Foot Spa Massage">
+        <img src="foot spa.jpg" alt="Foot Spa" />
+        <h3>Foot Spa Massage</h3>
+        <div class="price">$65 / 30 min<br>$95 / 60 min</div>
+        <p>A soothing massage focused on feet and lower legs, using pressure points to stimulate internal organs, improve blood circulation, and ease daily fatigue. Ideal for long standing hours.</p>
+        <button class="btn">Book Now</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section scroll-reveal">
+    <h2>Oil Massages</h2>
+    <div class="services-grid">
+      <div class="card" data-name="Thai Aroma Herbal">
+        <img src="thai aroma herbal.jpg" alt="Thai Aroma Herbal" />
+        <h3>Thai Aroma Herbal</h3>
+        <div class="price">$125 / 60 min<br>$170 / 90 min<br>$205 / 120 min</div>
+        <p>A luxurious experience combining soft oil massage with the healing power of herbal aromas to calm nerves, soothe aches, and restore emotional balance.</p>
+        <button class="btn">Book Now</button>
+      </div>
+      <div class="card" data-name="Swedish Relaxation">
+        <img src="istockphoto-469916170-612x612.jpg" alt="Swedish" />
+        <h3>Swedish Relaxation</h3>
+        <div class="price">$125 / 60 min<br>$170 / 90 min<br>$205 / 120 min</div>
+        <p>A classic massage that uses gentle, flowing strokes to ease stress, improve circulation, and promote deep relaxation. Best for beginners or those seeking stress relief.</p>
+        <button class="btn">Book Now</button>
+      </div>
+      <div class="card" data-name="Deep Tissue">
+        <img src="Back.jpg" alt="Deep Tissue" />
+        <h3>Deep Tissue</h3>
+        <div class="price">$135 / 60 min<br>$180 / 90 min<br>$215 / 120 min</div>
+        <p>Uses slow, deep pressure to break down knots and scar tissue in muscles and connective tissue. Ideal for athletes, active individuals, or those with chronic tension or pain.</p>
+        <button class="btn">Book Now</button>
+      </div>
+      <div class="card" data-name="Lymphatic Drainage">
+        <img src="Lymphatic Drainage Massage.png" alt="Lymphatic Drainage" />
+        <h3>Lymphatic Drainage</h3>
+        <div class="price">$140 / 60 min<br>$185 / 90 min</div>
+        <p>A gentle, detoxifying massage that promotes lymph flow, reduces swelling, and strengthens the immune system. Beneficial for post-surgery recovery or chronic fatigue.</p>
+        <button class="btn">Book Now</button>
+      </div>
+      <div class="card" data-name="Hot Stone Massage">
+        <img src="hot stone.jpg" alt="Hot Stone" />
+        <h3>Hot Stone Massage</h3>
+        <div class="price">$145 / 60 min<br>$190 / 90 min</div>
+        <p>Heated volcanic stones are placed and massaged into muscles, melting tension and improving circulation. Excellent for stress relief and deep relaxation.</p>
+        <button class="btn">Book Now</button>
+      </div>
+      <div class="card" data-name="Pregnancy Massage">
+        <img src="pregnacy.jpg" alt="Pregnancy" />
+        <h3>Pregnancy Massage</h3>
+        <div class="price">$130 / 60 min<br>$175 / 90 min</div>
+        <p>Tailored to the needs of expecting mothers, this gentle massage reduces swelling, eases muscle aches, and improves sleep while ensuring the safety of both mom and baby.</p>
+        <button class="btn">Book Now</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section scroll-reveal">
+    <h2>Facial Massage</h2>
+    <div class="services-grid">
+      <div class="card" data-name="Facial Detox">
+        <img src="facial.jpg" alt="Facial Detox" />
+        <h3>Facial Detox</h3>
+        <div class="price">$70 / 30 min<br>$135 / 60 min</div>
+        <p>A refreshing and hydrating facial that cleanses pores, exfoliates dead skin, and boosts circulation for a glowing, revitalized appearance. Ideal for stressed or tired skin.</p>
+        <button class="btn">Book Now</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section scroll-reveal">
+    <h2>Add Ons</h2>
+    <div class="services-grid">
+      <div class="card" data-name="CBD Oil">
+        <img src="cbd oil.jpg" alt="CBD Oil" />
+        <h3>CBD Oil</h3>
+        <div class="price">$15</div>
+        <p>Enhances any massage with the soothing, anti-inflammatory properties of CBD, helping reduce chronic pain, muscle tension, and anxiety.</p>
+        <button class="btn">Add</button>
+      </div>
+      <div class="card" data-name="CBD Cream">
+        <img src="CBD cream.jpg" alt="CBD Cream" />
+        <h3>CBD Cream</h3>
+        <div class="price">$15</div>
+        <p>A rich topical infused with CBD for spot relief on joints and muscles. Great for recovery, inflammation, and deep relaxation during or after your massage.</p>
+        <button class="btn">Add</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p><strong>Phone:</strong> (111) 111-1111</p>
+    <p><strong>Email:</strong> Janjao@gmail.com</p>
+    <p><strong>Address:</strong> 789 Lotus Street, Serenity, CA 94555</p>
+    <p>&copy; 2025 Janjao Thai Spa and Wellness. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const revealElements = document.querySelectorAll('.scroll-reveal');
+    window.addEventListener('scroll', () => {
+      const trigger = window.innerHeight * 0.85;
+      revealElements.forEach(el => {
+        if (el.getBoundingClientRect().top < trigger) {
+          el.classList.add('active');
+        }
+      });
+    });
+
+    document.querySelectorAll('.card img').forEach(img => {
+      img.addEventListener('click', () => {
+        const overlay = document.createElement('div');
+        overlay.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;z-index:2000;';
+        const clone = img.cloneNode();
+        clone.style.maxWidth = '80vw';
+        clone.style.maxHeight = '80vh';
+        overlay.appendChild(clone);
+        overlay.addEventListener('click', () => document.body.removeChild(overlay));
+        document.body.appendChild(overlay);
+      });
+    });
+
+    const searchBar = document.getElementById('searchBar');
+    searchBar.addEventListener('input', () => {
+      const query = searchBar.value.toLowerCase();
+      document.querySelectorAll('.card').forEach(card => {
+        const name = card.getAttribute('data-name').toLowerCase();
+        card.style.display = name.includes(query) ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
